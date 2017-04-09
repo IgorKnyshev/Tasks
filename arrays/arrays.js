@@ -113,4 +113,3 @@ console.log(range(-5, null, -2));
 console.log(range(-10, -20, -5));
 console.log(range(-20, -10, -5));
 console.log(range(10, 20, 5, 5, 5));
-console.log(range(10, 20, 5, 5, 5));
