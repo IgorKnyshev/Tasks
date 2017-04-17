@@ -41,7 +41,7 @@ function range(a, b, c) {
 function compactWithCycle(a) {
   var arr = [];
   for (var i = 0; i < a.length; i++) {
-    if (!!(a[i]) === true) {
+    if (a[i]) {
       arr.push(a[i]);
     }
   }
@@ -51,7 +51,7 @@ function compactWithCycle(a) {
 function compactWithFilter(a) {
   var arr = [];
   arr = a.filter(function(b) {
-    if (!!(b) === true) {
+    if (b) {
       return b;
     }
   });
@@ -69,9 +69,9 @@ function sumWithCycle(a) {
 
 function sumWithReduce(a) {
   var sum = 0;
-  sum = a.reduce(function(b,c) {
+  sum = a.reduce(function(b, c) {
     return b + c;
-  },0);
+  });
   return sum;
 }
 
