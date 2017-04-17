@@ -1,13 +1,9 @@
-function div(a, b) {
-  return ((a + b)-(a + b)%2)/2;
-}
-
 function binarySearch(array, a) {
   var mid_prev = -1;
   var left = 0;
   var right = array.length;
-  var mid = div(left, right);
-  while (true) {
+  var mid = Math.floor((left + right) / 2);
+  while (mid !== mid_prev) {
     if (array[mid] === a) {
       return mid;
     }
@@ -17,10 +13,7 @@ function binarySearch(array, a) {
       right = mid;
     }
     mid_prev = mid;
-    mid = div(left, right);
-    if (mid === mid_prev) {
-      return -1;
-    }
+    mid = Math.floor((left + right) / 2);
   }
 }
 
