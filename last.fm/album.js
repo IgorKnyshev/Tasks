@@ -1,5 +1,5 @@
-var album = {
-  getInfo : function (api_key, artist, album, username, mbid, lang, autocorrect) {
+function Album()  {
+  this.getInfo = function (api_key, artist, album, username, mbid, lang, autocorrect) {
     loader.url += '?method=album.getinfo' + '&api_key=' + api_key;
     if (artist !== undefined) {
       loader.url += '&artist=' + artist;
@@ -32,8 +32,9 @@ var album = {
     loader.request.open('GET', loader.url);
     loader.request.send();
   }
-};
+}
 
-album.__proto__ = loader;
+var album = new Album();
+album.prototype = loader;
 
 // album.getInfo(loader.api_key, 'Cher', 'Believe', 'awd');
