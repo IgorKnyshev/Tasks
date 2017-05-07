@@ -1,5 +1,11 @@
-function Artist() {
-  this.search = function(api_key, artist, limit, page) {
+function Artist(api_key) {
+  Loader.apply(this, arguments);
+}
+
+Artist.prototype = Object.create(Loader.prototype);
+Artist.prototype.constructor = Artist;
+
+Artist.prototype.search = function(api_key, artist, limit, page) {
     loader.url += '?method=artist.search' + '&api_key=' + api_key + '&artist=' + artist;
     if (limit !== undefined) {
       loader.url += '&limit=' + limit;
@@ -21,9 +27,9 @@ function Artist() {
     };
     loader.request.open('GET', loader.url);
     loader.request.send();
-  }
+};
 
-  this.getInfo = function(api_key, artist, username, mbid, lang, autocorrect) {
+Artist.prototype.getInfo = function(api_key, artist, username, mbid, lang, autocorrect) {
     loader.url +=  '?method=artist.getinfo' + '&api_key=' + api_key + '&artist=' + artist;
     if (username !== undefined) {
       loader.url += '&username=' + username;
@@ -53,11 +59,9 @@ function Artist() {
     };
     loader.request.open('GET', loader.url);
     loader.request.send();
-  }
-}
+};
 
 var artist = new Artist();
-artist.prototype = loader;
 
 // artist.search(loader.api_key, 'cher');
 artist.getInfo(loader.api_key, 'Cher', '', '', 'bel');

@@ -1,5 +1,11 @@
-function Chart() {
-  this.getTopArtists = function (api_key, limit, page) {
+function Chart(api_key) {
+  Loader.apply(this, arguments);
+}
+
+Chart.prototype = Object.create(Loader.prototype);
+Chart.prototype.constructor = Chart;
+
+Chart.prototype.getTopArtists = function (api_key, limit, page) {
     loader.url += '?method=chart.gettopartists' + '&api_key=' + api_key;
     if (limit !== undefined) {
       loader.url += '&limit=' + limit;
@@ -19,10 +25,8 @@ function Chart() {
     };
     loader.request.open('GET', loader.url);
     loader.request.send();
-  }
-}
+};
+
 
 var chart = new Chart();
-chart.prototype = loader;
-
 // chart.getTopArtists(loader.api_key, 20);
